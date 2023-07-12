@@ -17,13 +17,17 @@ export default component$(() => {
       
       <span class="text-9xl" >{ pokemonId }</span>
 
-      {/* TODO: crear imagen */}
+      <img width="96" height="96" 
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ pokemonId.value }.png`} 
+        alt="Pokemon Sprite"
+        style={{ width:'200px' }} 
+      />
 
       <div class="mt-2">
-        <button class="btn btn-primary mr-2">Anterior</button>
-        <button class="btn btn-primary">Siguiente</button>
+        <button onClick$={ () => pokemonId.value--} class="btn btn-primary mr-2">Anterior</button> 
+        <button onClick$={ () => pokemonId.value++} class="btn btn-primary">Siguiente</button>
       </div>
-      
+      {/* La propiedad onClick$, el signo de peso indica que la carga va ser perezosa, solo se va a cargar esa sola parte del codigo */}
     </>
   );
 });
