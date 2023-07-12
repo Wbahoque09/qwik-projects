@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 // import Counter from "~/components/starter/counter/counter";
@@ -9,6 +9,12 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 export default component$(() => {
 
   const pokemonId = useSignal(1); // useSignal se usa para mantener el estado, se usa con primitivos 
+
+  const changePokemonId = $(( value: number ) => {
+    if ( (pokemonId.value + value) <= 0 ) return;
+
+    pokemonId.value += value;
+  })
 
   return (
     <>
@@ -24,8 +30,8 @@ export default component$(() => {
       />
 
       <div class="mt-2">
-        <button onClick$={ () => pokemonId.value--} class="btn btn-primary mr-2">Anterior</button> 
-        <button onClick$={ () => pokemonId.value++} class="btn btn-primary">Siguiente</button>
+        <button onClick$={ () => changePokemonId(-1)} class="btn btn-primary mr-2">Anterior</button> 
+        <button onClick$={ () => changePokemonId(+1)} class="btn btn-primary">Siguiente</button>
       </div>
       {/* La propiedad onClick$, el signo de peso indica que la carga va ser perezosa, solo se va a cargar esa sola parte del codigo */}
     </>
