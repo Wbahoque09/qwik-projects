@@ -5,9 +5,10 @@ interface pokemonProps {
     id     : number;
     size?  : number;
     backImage: boolean;
+    showImage: boolean;
 }
 
-export const PokemonImage = component$(( {id, size = 200, backImage}:pokemonProps ) => {
+export const PokemonImage = component$(( {id, size = 200, backImage, showImage}:pokemonProps ) => {
 
     const imageLoader = useSignal(false);
 
@@ -35,7 +36,8 @@ export const PokemonImage = component$(( {id, size = 200, backImage}:pokemonProp
                         // },1000);
                     }} // Onload$ (carga perezosa) el onload es una propiedad de la imagen para verificar si se cargo la imagen y se le pasa una funcion que cambiar el valor del signal
                     class={{
-                        "hidden": !imageLoader.value
+                        "hidden": !imageLoader.value,
+                        "brightness-0": showImage
                     }}
                 />
             </div>

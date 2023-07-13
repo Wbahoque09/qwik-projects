@@ -11,6 +11,7 @@ export default component$(() => {
 
   const pokemonId = useSignal(1); // useSignal se usa para mantener el estado, se usa con primitivos
   const postionImagenPokemon = useSignal(false);
+  const revelationImage = useSignal(false);
 
   const changePokemonId = $(( value: number ) => {
     if ( (pokemonId.value + value) <= 0 ) return;
@@ -41,12 +42,13 @@ export default component$(() => {
         style={{ width:'200px' }} 
       /> */}
 
-      <PokemonImage id={ pokemonId.value } backImage={postionImagenPokemon.value} />
+      <PokemonImage id={ pokemonId.value } backImage={postionImagenPokemon.value} showImage={revelationImage.value}/>
 
       <div class="mt-2">
         <button onClick$={ () => changePokemonId(-1)} class="btn btn-primary mr-2">Anterior</button> 
         <button onClick$={ () => changePokemonId(+1)} class="btn btn-primary mr-2">Siguiente</button>
-        <button onClick$={ () => postionImagenPokemon.value = !postionImagenPokemon.value } class="btn btn-primary">Voltear</button> 
+        <button onClick$={ () => postionImagenPokemon.value = !postionImagenPokemon.value } class="btn btn-primary mr-2">Voltear</button>
+        <button onClick$={ () => revelationImage.value = !revelationImage.value } class="btn btn-primary mr-2">Revelar</button> 
       </div>
       {/* La propiedad onClick$, el signo de peso indica que la carga va ser perezosa, solo se va a cargar esa sola parte del codigo */}
     </>
