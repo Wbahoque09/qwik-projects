@@ -18,15 +18,15 @@ export default component$(() => {
     pokemonId.value += value;
   })
 
-  const changeImagePokemon = $(( change: boolean ) => {
-    // if ( change ){
-    //   postionImagenPokemon ? true : false;
-    // }
-    if (change != postionImagenPokemon.value) {
-      return postionImagenPokemon.value = true;
-    }
-    postionImagenPokemon.value = !change;
-  })
+  // const changeImagePokemon = $(( change: boolean ) => {
+  //   // if ( change ){
+  //   //   postionImagenPokemon ? true : false;
+  //   // }
+  //   if (change != postionImagenPokemon.value) {
+  //     return postionImagenPokemon.value = true;
+  //   }
+  //   postionImagenPokemon.value = !change;
+  // })
 
   return (
     <>
@@ -46,7 +46,7 @@ export default component$(() => {
       <div class="mt-2">
         <button onClick$={ () => changePokemonId(-1)} class="btn btn-primary mr-2">Anterior</button> 
         <button onClick$={ () => changePokemonId(+1)} class="btn btn-primary mr-2">Siguiente</button>
-        <button onClick$={ () => changeImagePokemon(true) } class="btn btn-primary">Voltear</button> 
+        <button onClick$={ () => postionImagenPokemon.value = !postionImagenPokemon.value } class="btn btn-primary">Voltear</button> 
       </div>
       {/* La propiedad onClick$, el signo de peso indica que la carga va ser perezosa, solo se va a cargar esa sola parte del codigo */}
     </>
