@@ -11,7 +11,7 @@ export default component$(() => {
 
   const pokemonId = useSignal(1); // useSignal se usa para mantener el estado, se usa con primitivos
   const postionImagenPokemon = useSignal(false);
-  const revelationImage = useSignal(false);
+  const revelationImage = useSignal(true);
 
   const changePokemonId = $(( value: number ) => {
     if ( (pokemonId.value + value) <= 0 ) return;
