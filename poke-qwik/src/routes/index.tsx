@@ -1,5 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { useNavigate, type DocumentHead } from "@builder.io/qwik-city";
 import { PokemonImage } from "~/components/pokemos/pokemon-image";
 
 // import Counter from "~/components/starter/counter/counter";
@@ -13,10 +13,16 @@ export default component$(() => {
   const postionImagenPokemon = useSignal(false);
   const revelationImage = useSignal(true);
 
+  const navegacion = useNavigate();
+
   const changePokemonId = $(( value: number ) => {
     if ( (pokemonId.value + value) <= 0 ) return;
 
     pokemonId.value += value;
+  })
+
+  const goToNavigate = $( () => {
+    navegacion(`pokemon/${pokemonId.value}/`);
   })
 
   // const changeImagePokemon = $(( change: boolean ) => {
@@ -42,7 +48,12 @@ export default component$(() => {
         style={{ width:'200px' }} 
       /> */}
 
-      <PokemonImage id={ pokemonId.value } backImage={postionImagenPokemon.value} showImage={revelationImage.value}/>
+      <div onClick$={async () => {
+        await goToNavigate();
+      } }>
+        <PokemonImage id={ pokemonId.value } backImage={postionImagenPokemon.value} showImage={revelationImage.value}/>
+      </div>
+      
 
       <div class="mt-2">
         <button onClick$={ () => changePokemonId(-1)} class="btn btn-primary mr-2">Anterior</button> 
