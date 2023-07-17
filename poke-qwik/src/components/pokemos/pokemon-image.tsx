@@ -2,10 +2,10 @@ import { component$, useSignal, useTask$ } from '@builder.io/qwik';
 
 
 interface pokemonProps {
-    id     : number;
+    id     : number | string;
     size?  : number;
-    backImage: boolean;
-    showImage: boolean;
+    backImage?: boolean;
+    showImage?: boolean;
 }
 
 export const PokemonImage = component$(( {id, size = 200, backImage, showImage}:pokemonProps ) => {
