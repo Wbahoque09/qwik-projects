@@ -25,7 +25,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 // });
 
 export default component$(() => {
-  useStyles$(styles);
+  useStyles$(styles); // Hook que sirve para agregar de manera global los estilos dentro de la carpeta routes, puesto que aqui pasan todos los componentes
   return (
     <>
       <Navbar />
