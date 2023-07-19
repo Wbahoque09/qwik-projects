@@ -1,23 +1,25 @@
 import { component$, useComputed$ } from '@builder.io/qwik';
 import { Link, type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-city';
-import type { BasicPokemonInfo, PokemonListResponse } from '~/interfaces';
+import { getSmallPokemons } from '~/helpers/get-small-pokemons';
+import type { SmallPokemon } from '~/interfaces';
 
-export const usePokemonList = routeLoader$<BasicPokemonInfo[]>(async({query, redirect, pathname}) => {
+export const usePokemonList = routeLoader$<SmallPokemon[]>(async({query, redirect, pathname}) => {
 
     // console.log({query,pathname});
     const offset = Number( query.get('offset') || '0' );
     if (isNaN(offset)) throw redirect(301, pathname);
     if (offset < 0) throw redirect(301, pathname);
     
-    
-
-    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`);
-    const data = await resp.json() as PokemonListResponse;
+    const pokemons = getSmallPokemons(offset);
+    console.log(pokemons);
+    return pokemons;
+    // const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`);
+    // const data = await resp.json() as PokemonListResponse;
 
     // console.log(data);
     
 
-    return data.results;
+    // return data.results;
 
 })
 
