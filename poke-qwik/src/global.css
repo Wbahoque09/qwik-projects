@@ -71,6 +71,10 @@ body {
   @apply bg-purple-600 text-white;
 }
 
+.btn-block {
+  @apply bg-purple-700 text-white opacity-50;
+}
+
 .btn-primary:hover {
   @apply bg-purple-700;
 }
