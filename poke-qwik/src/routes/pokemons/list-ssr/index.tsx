@@ -1,17 +1,19 @@
 import { component$, useComputed$ } from '@builder.io/qwik';
 import { Link, type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-city';
+import { PokemonImage } from '~/components/pokemos/pokemon-image';
 import { getSmallPokemons } from '~/helpers/get-small-pokemons';
 import type { SmallPokemon } from '~/interfaces';
 
-export const usePokemonList = routeLoader$<SmallPokemon[]>(async({query, redirect, pathname}) => {
+// Esta funcion (routeLoader), es para validar los segmentos de las url y mandar a llamar la data  
+export const usePokemonList = routeLoader$<SmallPokemon[]>(async({query, redirect, pathname}) => { 
 
     // console.log({query,pathname});
     const offset = Number( query.get('offset') || '0' );
     if (isNaN(offset)) throw redirect(301, pathname);
     if (offset < 0) throw redirect(301, pathname);
     
-    const pokemons = getSmallPokemons(offset);
-    console.log(pokemons);
+    const pokemons = await getSmallPokemons(offset);
+    // console.log(pokemons);
     return pokemons;
     // const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`);
     // const data = await resp.json() as PokemonListResponse;
@@ -64,11 +66,12 @@ export default component$(() => {
 
             <div class="grid grid-cols-6 mt-5">
                 {
-                    pokemonResp.value.map(({ name }) => (
+                    pokemonResp.value.map(({ name, id }) => (
                         <div 
                             key={ name }
                             class="m-5 flex flex-col justify-center items-center"
                         >
+                            <PokemonImage id={id} />
                             <span class="capitalize">{ name }</span>
                         </div>
                     ))
