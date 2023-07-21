@@ -1,5 +1,7 @@
-import { component$, useStore, } from '@builder.io/qwik';
+import { component$, useStore, useVisibleTask$, } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { PokemonImage } from '~/components/pokemos/pokemon-image';
+import { getSmallPokemons } from '~/helpers/get-small-pokemons';
 import { type SmallPokemon } from '~/interfaces';
 // import styles from '../../styles.css?inline'; Se importa con el signo de pregunta y inline para evitar errores y funcione correctamente
 
@@ -16,6 +18,15 @@ export default component$(() => {
         pokemons: [],
     })
 
+    // Solo el cliente (navegador), ve esta parte del codigo
+    useVisibleTask$(async({track}) => {
+        track(() => pokemonState.currentPage); // Modificador de useVisibleTask
+
+        const pokemons = await getSmallPokemons( pokemonState.currentPage * 10 );
+        pokemonState.pokemons = [...pokemonState.pokemons,...pokemons];
+        // Se hace un spread operator de los pokemones que se tenian antes y se concatenan los siguientes 
+    });
+
     return (
         <>
 
@@ -27,12 +38,12 @@ export default component$(() => {
             </div>
 
             <div class="mt-10">
-                <button
+                {/* <button
                     onClick$={() => pokemonState.currentPage--}
                     class= { pokemonState.currentPage === 0 ? "btn btn-block pointer-events-none mr-2" : "btn btn-primary mr-2"}
                 >
                     Anteriores
-                </button>
+                </button> */}
 
                 <button 
                     onClick$={() => pokemonState.currentPage++}
@@ -44,15 +55,15 @@ export default component$(() => {
 
             <div class="grid grid-cols-6 mt-5">
                 {
-                    // pokemonResp.value.map(({ name, id }) => (
-                    //     <div 
-                    //         key={ name }
-                    //         class="m-5 flex flex-col justify-center items-center"
-                    //     >
-                    //         <PokemonImage id={id} />
-                    //         <span class="capitalize">{ name }</span>
-                    //     </div>
-                    // ))
+                    pokemonState.pokemons.map(({ name, id }) => (
+                        <div 
+                            key={ name }
+                            class="m-5 flex flex-col justify-center items-center"
+                        >
+                            <PokemonImage id={id} />
+                            <span class="capitalize">{ name }</span>
+                        </div>
+                    ))
                 }
                 
             </div>
