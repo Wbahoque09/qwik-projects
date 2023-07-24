@@ -1,4 +1,4 @@
-import { component$, useStore, useVisibleTask$, } from '@builder.io/qwik';
+import { $, component$, useOnDocument, useStore, useVisibleTask$, } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { PokemonImage } from '~/components/pokemos/pokemon-image';
 import { getSmallPokemons } from '~/helpers/get-small-pokemons';
@@ -7,7 +7,8 @@ import { type SmallPokemon } from '~/interfaces';
 
 interface PokemonPageState {
     currentPage: number;
-    pokemons: SmallPokemon[];
+    isLoading  : boolean;
+    pokemons   : SmallPokemon[];
 }
 
 export default component$(() => {
@@ -15,6 +16,7 @@ export default component$(() => {
     // useStylesScoped$(styles); // El stylesScoped se declara dentro del componente y se le pasa el nombre del archivo css, solo sirve para la agregar de manera global al componente y lo que este dentro de el 
     const pokemonState = useStore<PokemonPageState>({
         currentPage: 0,
+        isLoading: true,
         pokemons: [],
     })
 
@@ -22,10 +24,24 @@ export default component$(() => {
     useVisibleTask$(async({track}) => {
         track(() => pokemonState.currentPage); // Modificador de useVisibleTask
 
-        const pokemons = await getSmallPokemons( pokemonState.currentPage * 10 );
+        const pokemons = await getSmallPokemons( pokemonState.currentPage * 30, 30 );
         pokemonState.pokemons = [...pokemonState.pokemons,...pokemons];
         // Se hace un spread operator de los pokemones que se tenian antes y se concatenan los siguientes 
+
+        pokemonState.isLoading = false; // Para controlar las peticiones
     });
+
+    useOnDocument('scroll', $(() => {
+        // console.log('scroll', event);
+        const maxScroll = document.body.scrollHeight;
+        const currentScroll = window.scrollY + window.innerHeight;
+
+        if (( currentScroll + 200 ) >= maxScroll && !pokemonState.isLoading ) {
+            pokemonState.isLoading = true; // Para controlar las peticiones
+            pokemonState.currentPage++; // Para controlar las peticiones
+        }
+
+    }))
 
     return (
         <>
@@ -53,7 +69,7 @@ export default component$(() => {
                 </button>
             </div>
 
-            <div class="grid grid-cols-6 mt-5">
+            <div class="grid sm:grid-cols-2 md:grid-cols-5 xl:grid-cols-7 mt-5">
                 {
                     pokemonState.pokemons.map(({ name, id }) => (
                         <div 
@@ -79,3 +95,13 @@ export default component$(() => {
 export const head: DocumentHead = {
     title: "List Client",
 };
+
+
+/**
+ * Diferencias entre useVisibleTask y useTask
+ * useVisibleTask: Solo se ejecuta en el navegador y después de la representación inicial, se ejecutará al menos una vez en el navegador y puede ser reactivo y volver a ejecutarse cuando cambie algún estado.
+ * useTask: 
+    Cuándo: ANTES del primer procesamiento del componente y cuando se realiza un seguimiento de los cambios de estado
+    Veces: al menos una vez
+    Plataforma: servidor y navegador
+ */

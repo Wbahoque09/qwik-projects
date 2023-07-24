@@ -1,4 +1,4 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik';
+import { component$, useComputed$, useSignal, useTask$ } from '@builder.io/qwik';
 
 
 interface pokemonProps {
@@ -20,14 +20,18 @@ export const PokemonImage = component$(( {id, size = 200, backImage, showImage}:
 
     });
 
+    const imageUrl = useComputed$(() => {
+        return ( !backImage )
+        ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ id }.png`
+        : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${ id }.png`
+    })
+
     return (
         <>
             <div class="flex items-center justify-center" style={{ width: `${ size }px`, height: `${ size }px` }}>
                 { !imageLoader.value && <span>Cargando...</span> }
                 <img width="96" height="96" 
-                    src= { !backImage ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ id }.png` : 
-                        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${ id }.png`
-                    }  
+                    src= { imageUrl.value }  
                     alt="Pokemon Sprite"
                     style={{ width:`${ size }px` }}
                     onLoad$={() => {
@@ -45,3 +49,7 @@ export const PokemonImage = component$(( {id, size = 200, backImage, showImage}:
     )
 
 });
+
+/**
+ * El uso useComputed$permite memorizar un valor derivado sincrónicamente de otro estado.
+ */
