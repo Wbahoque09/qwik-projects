@@ -6,7 +6,9 @@ import Navbar from '~/components/shared/navbar/navbar';
 
 
 import styles from './styles.css?inline';
-import { PokemonGameContext, type PokemonGameState } from '~/context';
+import { PokemonGameContext, PokemonListContext} from '~/context';
+import type { PokemonGameState, PokemonListState } from '~/context';
+
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -35,6 +37,14 @@ export default component$(() => {
   });
 
   useContextProvider( PokemonGameContext, pokemonGame ); // Este useContextProvider se coloca aqui para tener informacion global del estado en los componentes hijos
+
+  const pokemonLoading = useStore<PokemonListState>({
+    currentPage: 0,
+    isLoading: false,
+    pokemons: []
+  });
+
+  useContextProvider( PokemonListContext, pokemonLoading );
 
   return (
     <>
