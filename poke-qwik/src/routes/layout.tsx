@@ -1,11 +1,12 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
-// import { routeLoader$ } from "@builder.io/qwik-city";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import { component$, Slot, useContextProvider, useStore, useStyles$ } from '@builder.io/qwik';
+// import { routeLoader$ } from '@builder.io/qwik-city';
+import type { RequestHandler } from '@builder.io/qwik-city';
 
-import Navbar from "~/components/shared/navbar/navbar";
+import Navbar from '~/components/shared/navbar/navbar';
 
 
-import styles from "./styles.css?inline";
+import styles from './styles.css?inline';
+import { PokemonGameContext, type PokemonGameState } from '~/context';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -26,6 +27,15 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 export default component$(() => {
   useStyles$(styles); // Hook que sirve para agregar de manera global los estilos dentro de la carpeta routes, puesto que aqui pasan todos los componentes
+
+  const pokemonGame = useStore<PokemonGameState>({
+    pokemonId: 4,
+    postionImagenPokemon: false,
+    revelationImage: true,
+  });
+
+  useContextProvider( PokemonGameContext, pokemonGame ); // Este useContextProvider se coloca aqui para tener informacion global del estado en los componentes hijos
+
   return (
     <>
       <Navbar />
