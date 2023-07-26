@@ -16,13 +16,6 @@ export default component$(() => {
 
   const navegacion = useNavigate();
 
-  const pokemonGame = useContext( PokemonGameContext );
-
-  const changePokemonId = $(( value: number ) => {
-    if ( ( pokemonGame.pokemonId + value) <= 0 ) return;
-
-    pokemonGame.pokemonId += value;
-  })
 
   const goToNavigate = $( () => {
     navegacion(`pokemon/${pokemonGame.pokemonId}/`);
