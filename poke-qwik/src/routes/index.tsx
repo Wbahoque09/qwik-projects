@@ -62,7 +62,7 @@ export default component$(() => {
         <button onClick$={ () => changePokemonId(-1)} class="btn btn-primary mr-2">Anterior</button> 
         <button onClick$={ () => changePokemonId(+1)} class="btn btn-primary mr-2">Siguiente</button>
         <button onClick$={ () => pokemonGame.postionImagenPokemon = !pokemonGame.postionImagenPokemon } class="btn btn-primary mr-2">Voltear</button>
-        <button onClick$={ () => pokemonGame.revelationImage = !pokemonGame.revelationImage } class="btn btn-primary mr-2">Revelar</button> 
+        <button onClick$={ () => pokemonGame.revelationImage = !pokemonGame.revelationImage } class="btn btn-primary mr-2">{ pokemonGame.revelationImage ? "Revelar" : "Ocultar" }</button> 
       </div>
       {/* La propiedad onClick$, el signo de peso indica que la carga va ser perezosa, solo se va a cargar esa sola parte del codigo */}
     </>

@@ -20,8 +20,19 @@ export const PokemonProvider = component$(() => {
     useContextProvider( PokemonGameContext, pokemonGame ); // Este useContextProvider se coloca aqui para tener informacion global del estado en los componentes hijos
     useContextProvider( PokemonListContext, pokemonLoading );
 
-    useVisibleTask$(() => {
-        // TODO: leer del local storage
+    useVisibleTask$(() => { // Se utiliza para leer la data guardada en el LocalStorage
+        if ( localStorage.getItem('pokemon-game') ) {
+            const { 
+                revelationImage = true,
+                pokemonId = 1,
+                postionImagenPokemon = false, 
+            } = JSON.parse(localStorage.getItem('pokemon-game')!) as PokemonGameState ; // Se desestructura de local storage y se vuelve a su estado inicial, los valores asignados son por defecto por si no viene nada 
+            // Se asignan al store los valores traidos del localStorage
+            pokemonGame.pokemonId = pokemonId;
+            pokemonGame.revelationImage = revelationImage;
+            pokemonGame.postionImagenPokemon = postionImagenPokemon;
+
+        }
     });
     
     useVisibleTask$(({ track }) => { // Se utiliza este useVisibleTask para guardar datos en el localStorage
