@@ -12,11 +12,11 @@ export const usePokemonGame = () => {
         pokemonGame.pokemonId += value;
     })
 
-    const toogleFromBack = $(() => {
+    const toggleFromBack = $(() => {
         pokemonGame.postionImagenPokemon = !pokemonGame.postionImagenPokemon
     });
 
-    const toogleVisible = $(() => {
+    const toggleVisible = $(() => {
         pokemonGame.revelationImage = !pokemonGame.revelationImage
     });
 
@@ -25,11 +25,11 @@ export const usePokemonGame = () => {
         postionImagenPokemon: useComputed$(() => pokemonGame.postionImagenPokemon),
         revelationImage     : useComputed$(() => pokemonGame.revelationImage),
 
-        nextPokemon: () => changePokemonId(+1),
-        prevPokemon: () => changePokemonId(-1),
+        nextPokemon: $(() => changePokemonId(+1)),
+        prevPokemon: $(() => changePokemonId(-1)),
 
-        toogleFromBack: toogleFromBack, // Aqui cambiamos por medio de una funcion la posicion de la imagen
-        toogleVisible : toogleVisible, // Aqui cambiamos por medio de una funcion la visibilidad de la imagen
+        toggleFromBack: toggleFromBack, // Aqui cambiamos por medio de una funcion la posicion de la imagen
+        toggleVisible : toggleVisible, // Aqui cambiamos por medio de una funcion la visibilidad de la imagen
 
     }
 
