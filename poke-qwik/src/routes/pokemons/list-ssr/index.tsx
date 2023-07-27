@@ -1,6 +1,7 @@
 import { component$, useComputed$ } from '@builder.io/qwik';
 import { Link, type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-city';
 import { PokemonImage } from '~/components/pokemos/pokemon-image';
+import { Modal } from '~/components/shared';
 import { getSmallPokemons } from '~/helpers/get-small-pokemons';
 import type { SmallPokemon } from '~/interfaces';
 
@@ -82,6 +83,8 @@ export default component$(() => {
             {/* <div>
                 { JSON.stringify(pokemonResp.value) }
             </div> */}
+
+            <Modal />
 
         </>
     )
