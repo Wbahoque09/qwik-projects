@@ -83,8 +83,15 @@ export default component$(() => {
             {/* <div>
                 { JSON.stringify(pokemonResp.value) }
             </div> */}
+            
+            <Modal>
+                <div q:slot='title'>Nombre del pokemon</div>
+                <div q:slot='content' class="flex flex-col justify-center items-center">
+                    <PokemonImage id={1} />
 
-            <Modal />
+                    <span>Preguntandole a ChatGPT</span>
+                </div>
+            </Modal>
 
         </>
     )
