@@ -1,14 +1,21 @@
-import { Slot, component$, useStylesScoped$ } from '@builder.io/qwik';
+import { type PropFunction, Slot, component$, useStylesScoped$ } from '@builder.io/qwik';
 import ModalStyles from './modal.css?inline';
 
+interface Props {
+    showModal: boolean;
+
+    closeFn: PropFunction<() => void>;
+}
 
 
-export const Modal = component$( () => {
+export const Modal = component$( ({ showModal, closeFn }: Props) => {
 
     useStylesScoped$(ModalStyles);
 
     return (
-        <div class="modal-background">
+        <div
+            onClick$={closeFn}
+            class={showModal ? "modal-background":"hidden"}>
             <div class="modal-content">
                 
                 <div class="mt-3 text-center">
@@ -27,6 +34,7 @@ export const Modal = component$( () => {
                     {/* Botton */}
                     <div class="items-center px-4 py-3">
                         <button
+                            onClick$={closeFn}
                             id="ok-btn"
                             class="modal-button"
                         >

@@ -1,4 +1,4 @@
-import { component$, useComputed$ } from '@builder.io/qwik';
+import { $, component$, useComputed$, useSignal } from '@builder.io/qwik';
 import { Link, type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-city';
 import { PokemonImage } from '~/components/pokemos/pokemon-image';
 import { Modal } from '~/components/shared';
@@ -30,6 +30,17 @@ export default component$(() => {
 
     const pokemonResp = usePokemonList();
     const location = useLocation();
+    const modalVisible = useSignal(false);
+
+    // Modal functions
+    const showModal = $(( id: string, name: string ) => {
+        console.log(id, name);
+        modalVisible.value = true;
+    })
+
+    const closeModal = $(() => {
+        modalVisible.value = false;
+    })
 
     const currentOffset = useComputed$<number>(() => {
         // const offsetString = location.url.searchParams.get('offset'); No encuentra el offset
@@ -70,6 +81,7 @@ export default component$(() => {
                     pokemonResp.value.map(({ name, id }) => (
                         <div 
                             key={ name }
+                            onClick$={() => showModal(id,name) }
                             class="m-5 flex flex-col justify-center items-center"
                         >
                             <PokemonImage id={id} />
@@ -84,7 +96,7 @@ export default component$(() => {
                 { JSON.stringify(pokemonResp.value) }
             </div> */}
             
-            <Modal>
+            <Modal showModal={modalVisible.value} closeFn={closeModal}>
                 <div q:slot='title'>Nombre del pokemon</div>
                 <div q:slot='content' class="flex flex-col justify-center items-center">
                     <PokemonImage id={1} />
