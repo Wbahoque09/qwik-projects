@@ -1,7 +1,9 @@
-import { $, component$, useComputed$, useSignal, useStore } from '@builder.io/qwik';
+import { $, component$, useComputed$, useSignal, useStore, useVisibleTask$ } from '@builder.io/qwik';
 import { Link, type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-city';
 import { PokemonImage } from '~/components/pokemos/pokemon-image';
 import { Modal } from '~/components/shared';
+// import { getDetailByPokemonId } from '~/helpers/get-information-pokemon-response';
+import { getFuncFactAboutPokemon } from '~/helpers/get-chat-gpt-response';
 import { getSmallPokemons } from '~/helpers/get-small-pokemons';
 import type { SmallPokemon } from '~/interfaces';
 
@@ -35,6 +37,26 @@ export default component$(() => {
         id:'',
         name:''
     });
+
+    const chatGptPokemonFact = useSignal('');
+
+    useVisibleTask$(({ track }) => {
+        track( () => modalPokemon.name );
+
+        chatGptPokemonFact.value = '';
+
+        if (modalPokemon.name.length > 0) {
+            getFuncFactAboutPokemon( modalPokemon.name )
+                .then( resp => chatGptPokemonFact.value = resp );
+        }
+        // if (modalPokemon.name.length > 0){
+        //     chatGptPokemonFact.value = '';
+        //     getDetailByPokemonId(modalPokemon.id).then(
+        //         (resp) => (chatGptPokemonFact.value = resp)
+        //     );
+        // }
+
+    })
 
     // Modal functions
     const showModal = $(( id: string, name: string ) => {
@@ -112,7 +134,12 @@ export default component$(() => {
                 <div q:slot='content' class="flex flex-col justify-center items-center">
                     <PokemonImage id={ modalPokemon.id } />
 
-                    <span>Preguntandole a ChatGPT</span>
+                    <span>
+                        { chatGptPokemonFact.value === '' 
+                            ? 'Preguntandole a ChatGPT' 
+                            :  chatGptPokemonFact
+                        }
+                    </span>
                 </div>
             </Modal>
 
