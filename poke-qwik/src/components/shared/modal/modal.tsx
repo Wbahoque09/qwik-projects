@@ -3,20 +3,31 @@ import ModalStyles from './modal.css?inline';
 
 interface Props {
     showModal: boolean;
+    persistent?: boolean;
+    size?: 'sm'|'md'|'lg'; 
 
     closeFn: PropFunction<() => void>;
 }
 
 
-export const Modal = component$( ({ showModal, closeFn }: Props) => {
+export const Modal = component$( ({ 
+    showModal, 
+    closeFn,
+    persistent = false,
+    size = 'md',
+}: Props) => {
 
     useStylesScoped$(ModalStyles);
 
     return (
         <div
-            onClick$={closeFn}
+            id="modal-content"
+            onClick$={ (event) => {
+                const elementID = (event.target as HTMLDivElement).id;
+                if( elementID === "modal-content" && !persistent ) closeFn();
+            }}
             class={showModal ? "modal-background":"hidden"}>
-            <div class="modal-content">
+            <div class={`modal-content modal-${size}`}>
                 
                 <div class="mt-3 text-center">
                     
