@@ -2,10 +2,10 @@ import { component$, Slot, useStyles$ } from '@builder.io/qwik';
 
 import type { RequestHandler } from '@builder.io/qwik-city';
 
-import Navbar from '~/components/shared/navbar/navbar';
+// import Navbar from '~/components/shared/navbar/navbar';
 
 import styles from './styles.css?inline';
-import { PokemonProvider } from '~/context/pokemon/pokemon-provider';
+// import { PokemonProvider } from '~/context/pokemon/pokemon-provider';
 
 
 
@@ -24,11 +24,6 @@ export default component$(() => {
   useStyles$(styles); // Hook que sirve para agregar de manera global los estilos dentro de la carpeta routes, puesto que aqui pasan todos los componentes
 
   return (
-    <PokemonProvider>
-      <Navbar />
-      <main class="flex flex-col items-center justify-center">
-        <Slot />
-      </main>
-    </PokemonProvider>
+    <Slot />
   );
 });
