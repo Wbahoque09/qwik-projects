@@ -1,0 +1,43 @@
+"filename", "language", "CSS", "TypeScript", "TypeScript JSX", "comment", "blank", "total"
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\icons\qwik.tsx", "TypeScript JSX", 0, 0, 28, 0, 1, 29
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\pokemos\pokemon-image.tsx", "TypeScript JSX", 0, 0, 39, 5, 14, 58
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\index.ts", "TypeScript", 0, 3, 0, 0, 2, 5
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\modal\modal.css", "CSS", 24, 0, 0, 0, 8, 32
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\modal\modal.tsx", "TypeScript JSX", 0, 0, 47, 4, 14, 65
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\navbar\navbar.module.css", "CSS", 38, 0, 0, 0, 7, 45
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\navbar\navbar.tsx", "TypeScript JSX", 0, 0, 28, 4, 4, 36
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\components\shared\router-head\router-head.tsx", "TypeScript JSX", 0, 0, 23, 3, 7, 33
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\context\index.ts", "TypeScript", 0, 2, 0, 1, 4, 7
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\context\pokemon\pokemon-game-context.tsx", "TypeScript JSX", 0, 0, 7, 0, 4, 11
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\context\pokemon\pokemon-list.context.tsx", "TypeScript JSX", 0, 0, 8, 2, 3, 13
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\context\pokemon\pokemon-provider.tsx", "TypeScript JSX", 0, 0, 34, 19, 18, 71
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\entry.dev.tsx", "TypeScript JSX", 0, 0, 5, 11, 2, 18
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\entry.preview.tsx", "TypeScript JSX", 0, 0, 4, 15, 2, 21
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\entry.ssr.tsx", "TypeScript JSX", 0, 0, 16, 13, 2, 31
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\global.css", "CSS", 55, 0, 0, 18, 11, 84
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\helpers\get-chat-gpt-response.ts", "TypeScript", 0, 16, 0, 2, 9, 27
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\helpers\get-information-pokemon-response.ts", "TypeScript", 0, 9, 0, 1, 4, 14
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\helpers\get-small-pokemons.ts", "TypeScript", 0, 10, 0, 3, 8, 21
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\hooks\use-counter.tsx", "TypeScript JSX", 0, 0, 15, 0, 6, 21
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\hooks\use-pokemon-game.tsx", "TypeScript JSX", 0, 0, 24, 0, 12, 36
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\interfaces\index.ts", "TypeScript", 0, 2, 0, 0, 1, 3
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\interfaces\pokemon-list.response.ts", "TypeScript", 0, 10, 0, 1, 4, 15
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\interfaces\small-pokemon.ts", "TypeScript", 0, 4, 0, 0, 2, 6
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\root.tsx", "TypeScript JSX", 0, 0, 23, 6, 4, 33
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(auth)\login\index.tsx", "TypeScript JSX", 0, 0, 8, 0, 1, 9
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(auth)\login\layout.tsx", "TypeScript JSX", 0, 0, 9, 0, 1, 10
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(auth)\login\login.css", "CSS", 0, 0, 0, 0, 1, 1
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\index.tsx", "TypeScript JSX", 0, 0, 45, 23, 21, 89
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\layout.tsx", "TypeScript JSX", 0, 0, 13, 0, 2, 15
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\pokemon\[id]\index.tsx", "TypeScript JSX", 0, 0, 37, 3, 12, 52
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\pokemons\indexa.tsx", "TypeScript JSX", 0, 0, 4, 5, 3, 12
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\pokemons\list-client\index.tsx", "TypeScript JSX", 0, 0, 55, 33, 22, 110
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\(pokemons)\pokemons\list-ssr\index.tsx", "TypeScript JSX", 0, 0, 95, 23, 34, 152
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\counter\index.tsx", "TypeScript JSX", 0, 0, 22, 0, 8, 30
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\counter\layout.tsx", "TypeScript JSX", 0, 0, 14, 0, 2, 16
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\dashboard\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 1, 1
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\dashboard\layout.tsx", "TypeScript JSX", 0, 0, 8, 0, 1, 9
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\layout.tsx", "TypeScript JSX", 0, 0, 15, 6, 9, 30
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\service-worker.ts", "TypeScript", 0, 5, 0, 9, 5, 19
+"c:\Users\william.bahoque\Documents\Proyectos y pruebas\qwik-projects\poke-qwik\src\routes\styles.css", "CSS", 171, 0, 0, 13, 24, 208
+"Total", "-", 288, 61, 626, 223, 300, 1498
