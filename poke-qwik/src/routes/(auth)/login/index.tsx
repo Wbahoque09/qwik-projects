@@ -24,7 +24,10 @@ export const useLoginUserAction = routeAction$(( data, { cookie, redirect } ) =>
     }
 
 
-});
+}, zod$({
+    email   : z.string().email('Formato no válido'),
+    password: z.string().min(6,'Minimo 6 letras'),
+}));
 
 export default component$(() => {
 
