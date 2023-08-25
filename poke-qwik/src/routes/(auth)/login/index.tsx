@@ -1,5 +1,5 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { Form, routeAction$, zod$, z } from '@builder.io/qwik-city';
+import { Form, routeAction$, zod$, z, type DocumentHead } from '@builder.io/qwik-city';
 
 import styles from './login.css?inline';
 
@@ -11,7 +11,7 @@ export const useLoginUserAction = routeAction$(( data, { cookie, redirect } ) =>
     // TypeOrm Prisma
     if (email === 'correo@correo.com' && password === '123456') {
         cookie.set('jwt','esto_es_mi_jwt',{ secure: true, path: '/' });
-        redirect(302, '/');    
+        throw redirect(302, '/');    
         // return {
         //     success: true,
         //     jwt: 'esto_es_mi_jwt'
@@ -63,3 +63,7 @@ export default component$(() => {
         </Form>
     )
 });
+
+export const head: DocumentHead = {
+    title: "Login",
+};
